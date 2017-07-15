@@ -10,7 +10,7 @@ hydra = Typhoeus::Hydra.new(max_concurrency: 1)
 i = 0
 queries = (initial_date .. final_date).map { |date|
 
-	url = "http://api.fixer.io/#{date}?base=USD&symbols=BRL";
+	url = "http://api.fixer.io/#{date}?base=USD&symbols=BRL"
 	request = Typhoeus::Request.new(url, followlocation: true)
 
 	hydra.queue(request)
