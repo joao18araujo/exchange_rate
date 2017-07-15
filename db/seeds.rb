@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+path = 'app/assets/algorithms/currencies.json'
+file = File.open(path).read
+exchange_rates = JSON.parse(file)
+
+exchange_rates.each do |exchange_rate|
+  date = exchange_rate['date']
+  value = exchange_rate['value']
+  puts "#{date} and #{value}"
+
+  BrlExchangeRate.where(date: date, value: value).first_or_create
+end

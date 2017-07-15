@@ -15,8 +15,6 @@ queries = (initial_date .. final_date).map { |date|
 
 	hydra.queue(request)
 
-	puts date
-
 	{date: date, request: request}
 }
 
@@ -26,19 +24,12 @@ map = queries.map{ |query|
 	current_date = query[:date]
 
 	response_array = JSON.parse(query[:request].response.body)
-	exchange_rate = response_array['rates']['BRL']
-	
-	{date: query[:date], exchange_rate: exchange_rate}
+	value = response_array['rates']['BRL']
+
+	{date: query[:date], value: value}
 }
-
-map.each do |x|
-	puts "#{x[:date]} : #{x[:exchange_rate]}"
-end
-
-puts map.to_json
 
 File.open('currencies.json', 'w') do |file|
 	currency_json = JSON.pretty_generate(map, {indent: "\t", object_nl: "\n"})
 	file.write(currency_json)
 end
-
