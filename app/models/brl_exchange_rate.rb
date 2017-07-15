@@ -1,0 +1,2 @@
+class BrlExchangeRate < ApplicationRecord
+end

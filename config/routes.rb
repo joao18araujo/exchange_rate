@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'brl_exchange_rates#index'
 
+  get '/brl_exchange_rates' => 'brl_exchange_rates#index'
+  post '/process_json' => 'brl_exchange_rates#process_json'
   get '/statics' => 'statics#index'
 
 end

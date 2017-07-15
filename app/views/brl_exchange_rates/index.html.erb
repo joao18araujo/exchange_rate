@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Brl Exchange Rates</h1>
+
+<% if @brl_exchange_rates.empty? %>
+  <div>
+    Não há elementos cadastrados
+
+    <%= link_to "Processar", process_json_path, method: :post, class: 'btn btn-primary btn-sm button', id: 'jump-btn' %>
+  </div>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @brl_exchange_rates.each do |brl_exchange_rate| %>
+        <tr>
+          <td><%= brl_exchange_rate.date %></td>
+          <td><%= brl_exchange_rate.value %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<br>
