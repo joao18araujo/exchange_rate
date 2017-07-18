@@ -7,7 +7,6 @@ final_date = Date.new(2011, 11, 17)
 
 hydra = Typhoeus::Hydra.new(max_concurrency: 1)
 
-i = 0
 queries = (initial_date .. final_date).map { |date|
 
 	url = "http://api.fixer.io/#{date}?base=USD&symbols=BRL"
