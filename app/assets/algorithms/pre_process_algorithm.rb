@@ -26,7 +26,7 @@ map = queries.map{ |query|
 	response_array = JSON.parse(query[:request].response.body)
 	value = response_array['rates']['BRL']
 
-	{date: query[:date], value: value}
+	{date: current_date, value: value}
 }
 
 File.open('currencies.json', 'w') do |file|
